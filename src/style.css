@@ -1,9 +1,25 @@
 header {
   font-family: "Fjalla One", sans-serif;
-  background-color: #ff7ba9;
+  background-color: #c1f4c5;
   color: #fff;
 }
 
 header img {
   height: 40px;
+}
+
+.choose {
+}
+
+.items div {
+  background-color: #ffbed8;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 20px;
+  padding: 10px 10px 0 15px;
+}
+
+.items div:hover {
+  background-color: #ff7ba9;
+  padding: 15px 15px 5px 20px;
 }
