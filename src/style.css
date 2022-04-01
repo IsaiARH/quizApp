@@ -1,7 +1,20 @@
 header {
-  font-family: "Fjalla One", sans-serif;
   background-color: #c1f4c5;
   color: #fff;
+}
+
+header p {
+  font-size: 15px;
+  color: #65c18c;
+}
+
+header ion-icon {
+  font-size: 15px;
+  color: #65c18c;
+}
+
+header h1 {
+  font-family: "Fjalla One", sans-serif;
 }
 
 header img {
@@ -9,6 +22,10 @@ header img {
 }
 
 .choose {
+  height: 100vh;
+  background-image: url("./imgs/19629.jpg");
+  background-position: 10px;
+  background-size: contain;
 }
 
 .items div {
@@ -17,9 +34,14 @@ header img {
   color: #fff;
   font-size: 20px;
   padding: 10px 10px 0 15px;
+  opacity: 0.9;
+}
+
+.items div img {
 }
 
 .items div:hover {
   background-color: #ff7ba9;
   padding: 15px 15px 5px 20px;
+  opacity: 1;
 }

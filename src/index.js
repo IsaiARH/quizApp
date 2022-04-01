@@ -17,10 +17,47 @@ import linux from "./imgs/icons/linux.png";
 
 const head = document.querySelector(".header");
 const codeHead = `
- <h1 class="me-2">QuizDev</h1>
-<div>
-  <img src=${icon} alt="">
-</div>`;
+<div class="d-flex me-auto">
+  <div class="d-flex align-items-center mx-4">
+    <p class="me-1 dropdown-toggle" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">Difficulty</p>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+    <li><a class="dropdown-item" href="#">Easy</a></li>
+    <li><a class="dropdown-item" href="#">Medium</a></li>
+    <li><a class="dropdown-item" href="#">Hard</a></li>
+  </ul>
+  </div>
+  <div class="d-flex align-items-center">
+    <p class="me-1 dropdown-toggle" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">Number of questions</p>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+    <li><a class="dropdown-item" href="#">1</a></li>
+    <li><a class="dropdown-item" href="#">2</a></li>
+    <li><a class="dropdown-item" href="#">3</a></li>
+    <li><a class="dropdown-item" href="#">4</a></li>
+    <li><a class="dropdown-item" href="#">5</a></li>
+    <li><a class="dropdown-item" href="#">6</a></li>
+    <li><a class="dropdown-item" href="#">7</a></li>
+    <li><a class="dropdown-item" href="#">8</a></li>
+    <li><a class="dropdown-item" href="#">9</a></li>
+    <li><a class="dropdown-item" href="#">10</a></li>
+    <li><a class="dropdown-item" href="#">11</a></li>
+    <li><a class="dropdown-item" href="#">12</a></li>
+    <li><a class="dropdown-item" href="#">13</a></li>
+    <li><a class="dropdown-item" href="#">14</a></li>
+    <li><a class="dropdown-item" href="#">15</a></li>
+    <li><a class="dropdown-item" href="#">16</a></li>
+    <li><a class="dropdown-item" href="#">17</a></li>
+    <li><a class="dropdown-item" href="#">18</a></li>
+    <li><a class="dropdown-item" href="#">19</a></li>
+  </ul>
+  </div>
+</div>
+<div class="d-flex me-auto">
+  <h1 class="me-2">QuizDev</h1>
+  <div>
+    <img src=${icon} alt="">
+  </div>
+</div>
+`;
 head.innerHTML = codeHead;
 
 const choose = document.querySelector(".choose");
