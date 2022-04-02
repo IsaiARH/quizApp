@@ -24,8 +24,10 @@ header img {
 .choose {
   height: 100vh;
   background-image: url("./imgs/19629.jpg");
+  background-size: cover;
   background-position: 10px;
-  background-size: contain;
+  background-position-x: center;
+  overflow: hidden;
 }
 
 .items div {
@@ -34,10 +36,7 @@ header img {
   color: #fff;
   font-size: 20px;
   padding: 10px 10px 0 15px;
-  opacity: 0.9;
-}
-
-.items div img {
+  opacity: 0.8;
 }
 
 .items div:hover {

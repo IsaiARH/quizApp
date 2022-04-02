@@ -1,7 +1,10 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const miniCssExtractPlugin = require("mini-css-extract-plugin");
 module.exports = {
-  entry: "/src/index.js",
+  entry: {
+    main: "/src/index.js",
+    logic: "/src/logic.js",
+  },
   output: {
     assetModuleFilename: "images/[hash][ext][query]",
   },

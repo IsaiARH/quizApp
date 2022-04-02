@@ -64,37 +64,37 @@ const choose = document.querySelector(".choose");
 
 const contChoose = `
 <div class="d-flex justify-content-center my-5 items">
-  <div class="random d-flex flex-column align-items-center">
+  <div class="random d-flex flex-column align-items-center item">
     <img src=${random} alt="">
     <p class="">Random</p>
   </div>
-  <div class="devOps mx-5 d-flex flex-column align-items-center">
+  <div class="devOps mx-5 d-flex flex-column align-items-center item">
     <img src=${devOps} alt="">
     <p class="">Devops</p>
   </div>
-  <div class="netWOrking me-5 d-flex flex-column align-items-center">
+  <div class="netWOrking me-5 d-flex flex-column align-items-center item">
     <img src=${netWOrking} alt="">
     <p class="">Networking</p>
   </div>
-  <div class="Programming d-flex flex-column align-items-center">
+  <div class="Programming d-flex flex-column align-items-center item">
     <img src=${programing} alt="">
     <p class="">Programming</p>
   </div>
 </div>
 <div class="d-flex justify-content-center items">
-  <div class="cloud d-flex flex-column align-items-center">
+  <div class="cloud d-flex flex-column align-items-centerc item">
     <img src=${cloud} alt="">
     <p class="">Cloud</p>
   </div>
-  <div class="doker mx-5 d-flex flex-column align-items-center">
+  <div class="doker mx-5 d-flex flex-column align-items-center item">
     <img src=${doker} alt="">
     <p class="">Doker</p>
   </div>
-  <div class="kubernetes me-5 d-flex flex-column align-items-center">
+  <div class="kubernetes me-5 d-flex flex-column align-items-center item">
     <img src=${kubernetes} alt="">
     <p class="">Kubernetes</p>
   </div>
-  <div class="linux d-flex flex-column align-items-center">
+  <div class="linux d-flex flex-column align-items-center item">
     <img src=${linux} alt="">
     <p class="">Linux</p>
   </div>
