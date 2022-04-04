@@ -30,10 +30,18 @@ header img {
   overflow: hidden;
 }
 
+.question h2 {
+  color: #fff;
+}
+
+.body-question {
+  background-color: #fff;
+  border-radius: 10px;
+}
+
 .items div {
   background-color: #ffbed8;
   border-radius: 10px;
-  color: #fff;
   font-size: 20px;
   padding: 10px 10px 0 15px;
   opacity: 0.8;
@@ -43,4 +51,39 @@ header img {
   background-color: #ff7ba9;
   padding: 15px 15px 5px 20px;
   opacity: 1;
+}
+
+.question {
+  background-color: #65c18c;
+  font-family: "Rubik", sans-serif;
+}
+
+.question-container {
+  width: 300px;
+  border: 2px solid #ccc;
+  color: #ccc;
+  border-radius: 10px;
+}
+
+.question-container:hover {
+  color: #ff7ba9;
+  border: 2px solid #ff7ba9;
+}
+
+.question-container-active {
+  color: #ff7ba9;
+  border: 2px solid #ff7ba9;
+}
+
+.question h2 {
+  opacity: 0.8;
+}
+
+ion-icon {
+  font-size: 20px;
+}
+
+.icon_question-container img {
+  position: absolute;
+  width: 80px;
 }

@@ -102,6 +102,15 @@ const contChoose = `
 
 choose.innerHTML = contChoose;
 
+//add img to the section question
+const iconQuestionContainer = document.querySelector(
+  ".icon_question-container"
+);
+const iconQuestion = document.createElement("img");
+iconQuestion.classList.add("icon-question");
+iconQuestion.src = linux;
+iconQuestionContainer.appendChild(iconQuestion);
+
 fetch(
   "https://quizapi.io/api/v1/questions?apiKey=tykn9PoZShBttsb4necadNc6S6LQgfwdQzgHZ3B8&category=linux&limit=10"
 )
