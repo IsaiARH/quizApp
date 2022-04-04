@@ -29,25 +29,25 @@ const codeHead = `
   <div class="d-flex align-items-center">
     <p class="me-1 dropdown-toggle" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">Number of questions</p>
     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-    <li><a class="dropdown-item" href="#">1</a></li>
-    <li><a class="dropdown-item" href="#">2</a></li>
-    <li><a class="dropdown-item" href="#">3</a></li>
-    <li><a class="dropdown-item" href="#">4</a></li>
-    <li><a class="dropdown-item" href="#">5</a></li>
-    <li><a class="dropdown-item" href="#">6</a></li>
-    <li><a class="dropdown-item" href="#">7</a></li>
-    <li><a class="dropdown-item" href="#">8</a></li>
-    <li><a class="dropdown-item" href="#">9</a></li>
-    <li><a class="dropdown-item" href="#">10</a></li>
-    <li><a class="dropdown-item" href="#">11</a></li>
-    <li><a class="dropdown-item" href="#">12</a></li>
-    <li><a class="dropdown-item" href="#">13</a></li>
-    <li><a class="dropdown-item" href="#">14</a></li>
-    <li><a class="dropdown-item" href="#">15</a></li>
-    <li><a class="dropdown-item" href="#">16</a></li>
-    <li><a class="dropdown-item" href="#">17</a></li>
-    <li><a class="dropdown-item" href="#">18</a></li>
-    <li><a class="dropdown-item" href="#">19</a></li>
+    <li><a class="dropdown-item number-question" href="#">1</a></li>
+    <li><a class="dropdown-item number-question" href="#">2</a></li>
+    <li><a class="dropdown-item number-question" href="#">3</a></li>
+    <li><a class="dropdown-item number-question" href="#">4</a></li>
+    <li><a class="dropdown-item number-question" href="#">5</a></li>
+    <li><a class="dropdown-item number-question" href="#">6</a></li>
+    <li><a class="dropdown-item number-question" href="#">7</a></li>
+    <li><a class="dropdown-item number-question" href="#">8</a></li>
+    <li><a class="dropdown-item number-question" href="#">9</a></li>
+    <li><a class="dropdown-item number-question" href="#">10</a></li>
+    <li><a class="dropdown-item number-question" href="#">11</a></li>
+    <li><a class="dropdown-item number-question" href="#">12</a></li>
+    <li><a class="dropdown-item number-question" href="#">13</a></li>
+    <li><a class="dropdown-item number-question" href="#">14</a></li>
+    <li><a class="dropdown-item number-question" href="#">15</a></li>
+    <li><a class="dropdown-item number-question" href="#">16</a></li>
+    <li><a class="dropdown-item number-question" href="#">17</a></li>
+    <li><a class="dropdown-item number-question" href="#">18</a></li>
+    <li><a class="dropdown-item number-question" href="#">19</a></li>
   </ul>
   </div>
 </div>
@@ -66,7 +66,7 @@ const contChoose = `
 <div class="d-flex justify-content-center my-5 items">
   <div class="random d-flex flex-column align-items-center item">
     <img src=${random} alt="">
-    <p class="">Random</p>
+    <p class="">Uncategorized</p>
   </div>
   <div class="devOps mx-5 d-flex flex-column align-items-center item">
     <img src=${devOps} alt="">
@@ -78,7 +78,7 @@ const contChoose = `
   </div>
   <div class="Programming d-flex flex-column align-items-center item">
     <img src=${programing} alt="">
-    <p class="">Programming</p>
+    <p class="">Code</p>
   </div>
 </div>
 <div class="d-flex justify-content-center items">
@@ -110,9 +110,3 @@ const iconQuestion = document.createElement("img");
 iconQuestion.classList.add("icon-question");
 iconQuestion.src = linux;
 iconQuestionContainer.appendChild(iconQuestion);
-
-fetch(
-  "https://quizapi.io/api/v1/questions?apiKey=tykn9PoZShBttsb4necadNc6S6LQgfwdQzgHZ3B8&category=linux&limit=10"
-)
-  .then((res) => res.json())
-  .then((res) => console.log(res));

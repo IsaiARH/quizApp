@@ -1,3 +1,9 @@
+.first-part {
+  position: absolute;
+  width: 100%;
+  z-index: 10;
+}
+
 header {
   background-color: #c1f4c5;
   color: #fff;
@@ -56,6 +62,9 @@ header img {
 .question {
   background-color: #65c18c;
   font-family: "Rubik", sans-serif;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .question-container {
