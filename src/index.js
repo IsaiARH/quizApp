@@ -8,11 +8,11 @@ import anime from "animejs";
 import icon from "./imgs/icons/404-error (2).png";
 import random from "./imgs/icons/transfer.png";
 import devOps from "./imgs/icons/gears.png";
-import netWOrking from "./imgs/icons/teamwork.png";
+import cms from "./imgs/icons/cms.png";
 import programing from "./imgs/icons/code-listing.png";
-import cloud from "./imgs/icons/cloud.png";
+import bash from "./imgs/icons/gnu-bash.png";
 import doker from "./imgs/icons/whale.png";
-import kubernetes from "./imgs/icons/helm.png";
+import sql from "./imgs/icons/sql.png";
 import linux from "./imgs/icons/linux.png";
 
 const head = document.querySelector(".header");
@@ -73,8 +73,8 @@ const contChoose = `
     <p class="">Devops</p>
   </div>
   <div class="netWOrking me-5 d-flex flex-column align-items-center item">
-    <img src=${netWOrking} alt="">
-    <p class="">Networking</p>
+    <img src=${cms} alt="">
+    <p class="">Cms</p>
   </div>
   <div class="Programming d-flex flex-column align-items-center item">
     <img src=${programing} alt="">
@@ -83,16 +83,16 @@ const contChoose = `
 </div>
 <div class="d-flex justify-content-center items">
   <div class="cloud d-flex flex-column align-items-centerc item">
-    <img src=${cloud} alt="">
-    <p class="">Cloud</p>
+    <img src=${bash} alt="">
+    <p class="">Bash</p>
   </div>
   <div class="doker mx-5 d-flex flex-column align-items-center item">
     <img src=${doker} alt="">
     <p class="">Doker</p>
   </div>
   <div class="kubernetes me-5 d-flex flex-column align-items-center item">
-    <img src=${kubernetes} alt="">
-    <p class="">Kubernetes</p>
+    <img src=${sql} alt="">
+    <p class="">SQL</p>
   </div>
   <div class="linux d-flex flex-column align-items-center item">
     <img src=${linux} alt="">
