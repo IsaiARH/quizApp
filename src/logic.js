@@ -117,12 +117,16 @@ const carrousel = (n) => {
     containerSectionQuestion.innerHTML += sectionQuestion;
   }
   for (let i = 0; i <= n; i++) {
-    container.children[i].setAttribute("id", `question-${i}`);
+    container.children[i].setAttribute("id", `question-${i + 1}`);
+    container.children[i].children[0].children[1].children[0].textContent = `${
+      i + 1
+    }/`;
+    container.children[i].children[0].children[1].children[1].textContent =
+      numbers;
   }
 };
 
 //animation of the button next
-const questionNumber = document.querySelector(".question-number");
 const buttonNext = document.querySelector(".next");
 buttonNext.addEventListener("click", () => {
   topic.classList.add("mb-5");
@@ -131,12 +135,11 @@ buttonNext.addEventListener("click", () => {
   let $identify = identify.slice(1);
   let bodyQuestionS = document.getElementById(`${$identify}`);
   setTimeout(() => {
-    console.log(bodyQuestionS.previousElementSibling.getAttribute("id"));
+    let $questionNumber = bodyQuestionS.getAttribute("id").split("");
+    let number = $questionNumber[$questionNumber.length - 1];
     buttonNext.setAttribute(
       "href",
       `#${bodyQuestionS.nextElementSibling.getAttribute("id")}`
     );
-  }, 3000);
-  let $questionNumber = Number(questionNumber.textContent);
-  questionNumber.textContent = $questionNumber + 1;
+  }, 500);
 });
