@@ -106,7 +106,9 @@ choose.innerHTML = contChoose;
 const sectionQuestion = `
 <div class="body-question p-3">
         <div class="d-flex">
-          <h3 class="me-5">Question 1/19</h3>
+          
+          <h3 class="me-5">Question <i class="question-number">1</i>/<i class="question-amoung">19</i></h3>
+          
           <div class="icon_question-container">
           </div>
           <h3>00:00</h3>

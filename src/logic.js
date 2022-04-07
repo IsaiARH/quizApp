@@ -35,13 +35,6 @@ optionNumber.forEach((option) => {
 const bodyQuestion = document.querySelector(".body-question");
 const $bodyQuestion = bodyQuestion.getBoundingClientRect();
 const iconQuestion = document.createElement("img");
-iconQuestion.src = linuxIcon;
-const iconQuestionContainer = document.querySelector(
-  ".icon_question-container"
-);
-iconQuestionContainer.appendChild(iconQuestion);
-iconQuestion.style.top = `${$bodyQuestion.top - 50}px`;
-iconQuestion.style.right = `${$bodyQuestion.left}px`;
 
 //animation of the section choose
 items.forEach((item) => {
@@ -91,6 +84,13 @@ items.forEach((item) => {
     }
     carrousel(numbers - 1);
     topic.textContent = item.children[1].textContent;
+    iconQuestion.src = item.children[0].src;
+    const iconQuestionContainer = document.querySelector(
+      ".icon_question-container"
+    );
+    iconQuestionContainer.appendChild(iconQuestion);
+    iconQuestion.style.top = `${$bodyQuestion.top - 50}px`;
+    iconQuestion.style.right = `${$bodyQuestion.left}px`;
   });
 });
 
@@ -122,6 +122,7 @@ const carrousel = (n) => {
 };
 
 //animation of the button next
+const questionNumber = document.querySelector(".question-number");
 const buttonNext = document.querySelector(".next");
 buttonNext.addEventListener("click", () => {
   topic.classList.add("mb-5");
@@ -136,4 +137,6 @@ buttonNext.addEventListener("click", () => {
       `#${bodyQuestionS.nextElementSibling.getAttribute("id")}`
     );
   }, 3000);
+  let $questionNumber = Number(questionNumber.textContent);
+  questionNumber.textContent = $questionNumber + 1;
 });
