@@ -66,7 +66,7 @@ const contChoose = `
 <div class="d-flex justify-content-center my-5 items">
   <div class="random d-flex flex-column align-items-center item">
     <img src=${random} alt="">
-    <p class="">Uncategorized</p>
+    <p class="">Random</p>
   </div>
   <div class="devOps mx-5 d-flex flex-column align-items-center item">
     <img src=${devOps} alt="">
@@ -102,11 +102,86 @@ const contChoose = `
 
 choose.innerHTML = contChoose;
 
-//add img to the section question
-const iconQuestionContainer = document.querySelector(
-  ".icon_question-container"
-);
-const iconQuestion = document.createElement("img");
-iconQuestion.classList.add("icon-question");
-iconQuestion.src = linux;
-iconQuestionContainer.appendChild(iconQuestion);
+//section questions
+const sectionQuestion = `
+<div class="body-question p-3">
+        <div class="d-flex">
+          <h3 class="me-5">Question 1/19</h3>
+          <div class="icon_question-container">
+          </div>
+          <h3>00:00</h3>
+        </div>
+        <div class="h3">
+          <i>-</i>
+          <i>-</i>
+          <i>-</i>
+          <i>-</i>
+          <i>-</i>
+          <i>-</i>
+          <i>-</i>
+          <i>-</i>
+          <i>-</i>
+          <i>-</i>
+          <i>-</i>
+          <i>-</i>
+          <i>-</i>
+          <i>-</i>
+          <i>-</i>
+          <i>-</i>
+          <i>-</i>
+          <i>-</i>
+          <i>-</i>
+        </div>
+        <h4 class="text-center">what is</h4>
+        <div class="questions d-flex flex-column align-items-center">
+          <div
+            class="d-flex justify-content-between question-container py-1 px-3"
+          >
+            <p class="my-auto">test1</p>
+            <div class="question_container-input">
+              <input type="radio" class="d-none" id="checkbox" />
+              <label for="checkbox" class="question_container-label"
+                ><ion-icon name="stop-circle-outline" class="mt-1"></ion-icon
+              ></label>
+            </div>
+          </div>
+          <div
+            class="d-flex justify-content-between question-container py-1 px-3 mt-2"
+          >
+            <p class="my-auto">test2</p>
+            <div class="question_container-input">
+              <input type="radio" class="d-none" id="checkbox" />
+              <label for="checkbox" class="question_container-label"
+                ><ion-icon name="stop-circle-outline" class="mt-1"></ion-icon
+              ></label>
+            </div>
+          </div>
+          <div
+            class="d-flex justify-content-between question-container py-1 px-3 mt-2"
+          >
+            <p class="my-auto">test3</p>
+            <div class="question_container-input">
+              <input type="radio" class="d-none" id="checkbox" />
+              <label for="checkbox" class="question_container-label"
+                ><ion-icon name="stop-circle-outline" class="mt-1"></ion-icon
+              ></label>
+            </div>
+          </div>
+          <div
+            class="d-flex justify-content-between question-container py-1 px-3 mt-2 mb-5"
+          >
+            <p class="my-auto">test</p>
+            <div class="question_container-input">
+              <input type="radio" class="d-none" id="checkbox" />
+              <label for="checkbox" class="question_container-label"
+                ><ion-icon name="stop-circle-outline" class="mt-1"></ion-icon
+              ></label>
+            </div>
+          </div>
+        </div>
+      </div>`;
+
+export { sectionQuestion };
+
+const containerSectionQuestion = document.querySelector(".container");
+containerSectionQuestion.innerHTML = sectionQuestion;

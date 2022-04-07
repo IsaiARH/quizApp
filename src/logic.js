@@ -1,4 +1,5 @@
 import anime from "animejs";
+import linuxIcon from "./imgs/icons/linux.png";
 
 const containerQuestions = document.querySelectorAll(".question-container");
 const items = document.querySelectorAll(".item");
@@ -9,6 +10,7 @@ const down = linux.getBoundingClientRect();
 const head = document.querySelector(".header");
 const sectionChoose = document.querySelector(".choose");
 const difficultOption = document.querySelectorAll(".dropdown-item");
+const topic = document.querySelector(".topic");
 
 //getting the difficult
 let difficult = "easy";
@@ -28,6 +30,18 @@ optionNumber.forEach((option) => {
     return numbers;
   });
 });
+
+//dinamic position of the icon
+const bodyQuestion = document.querySelector(".body-question");
+const $bodyQuestion = bodyQuestion.getBoundingClientRect();
+const iconQuestion = document.createElement("img");
+iconQuestion.src = linuxIcon;
+const iconQuestionContainer = document.querySelector(
+  ".icon_question-container"
+);
+iconQuestionContainer.appendChild(iconQuestion);
+iconQuestion.style.top = `${$bodyQuestion.top - 50}px`;
+iconQuestion.style.right = `${$bodyQuestion.left}px`;
 
 //animation of the section choose
 items.forEach((item) => {
@@ -60,12 +74,23 @@ items.forEach((item) => {
       head.classList.add("d-none");
       sectionChoose.classList.add("d-none");
     }, 1000);
-    fetch(
-      `https://quizapi.io/api/v1/questions?apiKey=tykn9PoZShBttsb4necadNc6S6LQgfwdQzgHZ3B8&
-      category=${item.children[1].textContent}&difficulty=${difficult}&limit=${numbers}`
-    )
-      .then((res) => res.json())
-      .then((res) => console.log(res));
+    if (item.children[1].textContent == "Random") {
+      fetch(
+        `https://quizapi.io/api/v1/questions?apiKey=tykn9PoZShBttsb4necadNc6S6LQgfwdQzgHZ3B8&
+         &difficulty=${difficult}&limit=${numbers}`
+      )
+        .then((res) => res.json())
+        .then((res) => console.log(res));
+    } else {
+      fetch(
+        `https://quizapi.io/api/v1/questions?apiKey=tykn9PoZShBttsb4necadNc6S6LQgfwdQzgHZ3B8&
+        category=${item.children[1].textContent}&difficulty=${difficult}&limit=${numbers}`
+      )
+        .then((res) => res.json())
+        .then((res) => console.log(res));
+    }
+    carrousel(numbers - 1);
+    topic.textContent = item.children[1].textContent;
   });
 });
 
@@ -83,9 +108,32 @@ containerQuestions.forEach((item) => {
   });
 });
 
-//dinamic position of the icon
-const iconQuestion = document.querySelector(".icon-question");
-const bodyQuestion = document.querySelector(".body-question");
-const $bodyQuestion = bodyQuestion.getBoundingClientRect();
-iconQuestion.style.top = `${$bodyQuestion.top - 50}px`;
-iconQuestion.style.right = `${$bodyQuestion.left}px`;
+//creating the carrousel
+const container = document.querySelector(".container");
+import { sectionQuestion } from "./index.js";
+const containerSectionQuestion = document.querySelector(".container");
+const carrousel = (n) => {
+  for (let i = 0; i < n; i++) {
+    containerSectionQuestion.innerHTML += sectionQuestion;
+  }
+  for (let i = 0; i <= n; i++) {
+    container.children[i].setAttribute("id", `question-${i}`);
+  }
+};
+
+//animation of the button next
+const buttonNext = document.querySelector(".next");
+buttonNext.addEventListener("click", () => {
+  topic.classList.add("mb-5");
+  containerSectionQuestion.classList.add("container-active");
+  let identify = buttonNext.getAttribute("href");
+  let $identify = identify.slice(1);
+  let bodyQuestionS = document.getElementById(`${$identify}`);
+  setTimeout(() => {
+    console.log(bodyQuestionS.previousElementSibling.getAttribute("id"));
+    buttonNext.setAttribute(
+      "href",
+      `#${bodyQuestionS.nextElementSibling.getAttribute("id")}`
+    );
+  }, 3000);
+});

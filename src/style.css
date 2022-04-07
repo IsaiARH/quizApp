@@ -43,6 +43,7 @@ header img {
 .body-question {
   background-color: #fff;
   border-radius: 10px;
+  margin-top: 35px;
 }
 
 .items div {
@@ -57,6 +58,15 @@ header img {
   background-color: #ff7ba9;
   padding: 15px 15px 5px 20px;
   opacity: 1;
+}
+
+.container {
+  height: 460px;
+  overflow: hidden;
+}
+
+.container-active {
+  height: 430px;
 }
 
 .question {
@@ -95,4 +105,12 @@ ion-icon {
 .icon_question-container img {
   position: absolute;
   width: 80px;
+}
+
+.next {
+  text-decoration: none;
+  color: #fff;
+  border: 2px solid #ff7ba9;
+  background-color: #ffbed8;
+  border-radius: 5px;
 }
