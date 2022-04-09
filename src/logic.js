@@ -25,6 +25,7 @@ difficultOption.forEach((option) => {
 let numbers = 10;
 const optionNumber = document.querySelectorAll(".number-question");
 optionNumber.forEach((option) => {
+  let number = 10;
   option.addEventListener("click", () => {
     numbers = option.textContent;
     return numbers;
@@ -67,6 +68,7 @@ items.forEach((item) => {
       head.classList.add("d-none");
       sectionChoose.classList.add("d-none");
     }, 1000);
+    console.log(typeof numbers);
     if (item.children[1].textContent == "Random") {
       fetch(
         `https://quizapi.io/api/v1/questions?apiKey=tykn9PoZShBttsb4necadNc6S6LQgfwdQzgHZ3B8&
@@ -82,7 +84,7 @@ items.forEach((item) => {
         .then((res) => res.json())
         .then((res) => console.log(res));
     }
-    carrousel(numbers - 1);
+    //    carrousel(numbers - 1);
     topic.textContent = item.children[1].textContent;
     iconQuestion.src = item.children[0].src;
     const iconQuestionContainer = document.querySelector(
@@ -109,20 +111,23 @@ containerQuestions.forEach((item) => {
 });
 
 //creating the carrousel
-const container = document.querySelector(".container");
-import { sectionQuestion } from "./index.js";
+//import { sectionQuestion } from "./index.js";
 const containerSectionQuestion = document.querySelector(".container");
 const carrousel = (n) => {
   for (let i = 0; i < n; i++) {
     containerSectionQuestion.innerHTML += sectionQuestion;
   }
   for (let i = 0; i <= n; i++) {
-    container.children[i].setAttribute("id", `question-${i + 1}`);
-    container.children[i].children[0].children[1].children[0].textContent = `${
-      i + 1
-    }/`;
-    container.children[i].children[0].children[1].children[1].textContent =
-      numbers;
+    containerSectionQuestion.children[i].setAttribute(
+      "id",
+      `question-${i + 1}`
+    );
+    containerSectionQuestion.children[
+      i
+    ].children[0].children[1].children[0].textContent = `${i + 1}/`;
+    containerSectionQuestion.children[
+      i
+    ].children[0].children[1].children[1].textContent = numbers;
   }
 };
 

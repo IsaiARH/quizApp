@@ -15,7 +15,7 @@ import doker from "./imgs/icons/whale.png";
 import sql from "./imgs/icons/sql.png";
 import linux from "./imgs/icons/linux.png";
 
-const head = document.querySelector(".header");
+const head = document.querySelector(".header-div");
 const codeHead = `
 </div>
 <div class="d-flex me-auto">
@@ -54,7 +54,7 @@ const contChoose = `
   </div>
   <div class="doker mx-5 d-flex flex-column align-items-center item">
     <img src=${doker} alt="">
-    <p class="">Doker</p>
+    <p class="">Docker</p>
   </div>
   <div class="kubernetes me-5 d-flex flex-column align-items-center item">
     <img src=${sql} alt="">
@@ -151,7 +151,37 @@ const sectionQuestion = `
         </div>
       </div>`;
 
-export { sectionQuestion };
-
 const containerSectionQuestion = document.querySelector(".container");
 containerSectionQuestion.innerHTML = sectionQuestion;
+const carrousel = (n) => {
+  for (let i = 0; i < n; i++) {
+    containerSectionQuestion.innerHTML += sectionQuestion;
+  }
+  for (let i = 0; i <= n; i++) {
+    containerSectionQuestion.children[i].setAttribute(
+      "id",
+      `question-${i + 1}`
+    );
+    containerSectionQuestion.children[
+      i
+    ].children[0].children[1].children[0].textContent = `${i + 1}/`;
+    containerSectionQuestion.children[
+      i
+    ].children[0].children[1].children[1].textContent = numbers;
+  }
+};
+
+let numbers = 10;
+const optionNumber = document.querySelectorAll(".number-question");
+optionNumber.forEach((option) => {
+  option.addEventListener("click", () => {
+    numbers = option.textContent;
+  });
+});
+
+const items = document.querySelectorAll(".item");
+items.forEach((item) => {
+  item.addEventListener("click", () => {
+    carrousel(numbers - 1);
+  });
+});
