@@ -9,7 +9,7 @@ const up = devOps.getBoundingClientRect();
 const down = linux.getBoundingClientRect();
 const head = document.querySelector(".header");
 const sectionChoose = document.querySelector(".choose");
-const difficultOption = document.querySelectorAll(".dropdown-item");
+const difficultOption = document.querySelectorAll(".difficult-item");
 const topic = document.querySelector(".topic");
 
 //getting the difficult
@@ -22,13 +22,11 @@ difficultOption.forEach((option) => {
 });
 
 //getting the number of questions
-let numbers = 10;
+let numbers = "";
 const optionNumber = document.querySelectorAll(".number-question");
 optionNumber.forEach((option) => {
-  let number = 10;
   option.addEventListener("click", () => {
     numbers = option.textContent;
-    return numbers;
   });
 });
 
