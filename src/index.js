@@ -27,7 +27,6 @@ const codeHead = `
 head.innerHTML = codeHead;
 
 const choose = document.querySelector(".choose");
-
 const contChoose = `
 <div class="d-flex justify-content-center my-5 items">
   <div class="random d-flex flex-column align-items-center item">
@@ -65,7 +64,6 @@ const contChoose = `
     <p class="">Linux</p>
   </div>
 </div>`;
-
 choose.innerHTML = contChoose;
 
 //section questions
@@ -73,13 +71,12 @@ const sectionQuestion = `
 <div class="body-question p-3">
         <div class="d-flex">
             <h3 class="">Question</h3>
-            <div class="d-flex h3 ms-auto me-2">
+            <div class="d-flex h3 ms-auto me-5">
               <p class="">1/</p>
               <p class="question-amoung">19</p>
             </div>
           <div class="icon_question-container">
           </div>
-          <h3 class="me-5">00:00</h3>
         </div>
         <div class="h3">
           <i>-</i>
@@ -151,11 +148,15 @@ const sectionQuestion = `
         </div>
       </div>`;
 
+//carrousel
 const containerSectionQuestion = document.querySelector(".container");
 containerSectionQuestion.innerHTML = sectionQuestion;
 const carrousel = (n) => {
   for (let i = 0; i < n; i++) {
     containerSectionQuestion.innerHTML += sectionQuestion;
+    if (i + 1 == n) {
+      containerSectionQuestion.children[n].classList.add("mb-4");
+    }
   }
   for (let i = 0; i <= n; i++) {
     containerSectionQuestion.children[i].setAttribute(
@@ -167,10 +168,11 @@ const carrousel = (n) => {
     ].children[0].children[1].children[0].textContent = `${i + 1}/`;
     containerSectionQuestion.children[
       i
-    ].children[0].children[1].children[1].textContent = n;
+    ].children[0].children[1].children[1].textContent = n + 1;
   }
 };
 
+//dropdown difficult
 const difficultOption = document.querySelectorAll(".difficult-item");
 let difficult = "easy";
 difficultOption.forEach((option) => {
@@ -180,6 +182,7 @@ difficultOption.forEach((option) => {
   });
 });
 
+//dropdown number of questions
 let numbers = 10;
 const optionNumber = document.querySelectorAll(".number-question");
 optionNumber.forEach((option) => {
@@ -188,6 +191,7 @@ optionNumber.forEach((option) => {
   });
 });
 
+//event click in the section question
 const items = document.querySelectorAll(".item");
 items.forEach((item) => {
   item.addEventListener("click", () => {
@@ -199,7 +203,7 @@ items.forEach((item) => {
         .then((res) => res.json())
         .then((res) => {
           console.log(res);
-          carrousel(res.length);
+          carrousel(res.length - 1);
         });
     } else if (item.children[1].textContent == "Bash") {
       fetch(
@@ -208,7 +212,7 @@ items.forEach((item) => {
       )
         .then((res) => res.json())
         .then((res) => {
-          carrousel(res.length);
+          carrousel(res.length - 1);
           console.log(res);
         });
     } else {
@@ -218,7 +222,7 @@ items.forEach((item) => {
       )
         .then((res) => res.json())
         .then((res) => {
-          carrousel(res.length);
+          carrousel(res.length - 1);
           console.log(res);
         });
     }

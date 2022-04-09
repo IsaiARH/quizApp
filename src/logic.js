@@ -56,8 +56,32 @@ items.forEach((item) => {
     iconQuestionContainer.appendChild(iconQuestion);
     iconQuestion.style.top = `${$bodyQuestion.top - 50}px`;
     iconQuestion.style.right = `${$bodyQuestion.left}px`;
+    chronometerF();
   });
 });
+
+//chronometer
+const chronometer = document.querySelector(".chronometer");
+
+let running = 0;
+let stop;
+const chronometerF = () => {
+  let start = Date.now() - running;
+  stop = setInterval(() => {
+    running = Date.now() - start;
+    chronometer.textContent = calculateTheTime(running);
+  }, 1000);
+};
+
+const calculateTheTime = (time) => {
+  const total_seconds = Math.floor(time / 1000);
+  const total_minutes = Math.floor(total_seconds / 60);
+
+  const display_seconds = (total_seconds % 60).toString().padStart(2, "0");
+  const display_minutes = total_minutes.toString().padStart(2, "0");
+
+  return `${display_minutes}:${display_seconds}`;
+};
 
 //effect when we choose an answer
 containerQuestions.forEach((item) => {
