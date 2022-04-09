@@ -167,9 +167,18 @@ const carrousel = (n) => {
     ].children[0].children[1].children[0].textContent = `${i + 1}/`;
     containerSectionQuestion.children[
       i
-    ].children[0].children[1].children[1].textContent = numbers;
+    ].children[0].children[1].children[1].textContent = n;
   }
 };
+
+const difficultOption = document.querySelectorAll(".difficult-item");
+let difficult = "easy";
+difficultOption.forEach((option) => {
+  option.addEventListener("click", () => {
+    difficult = option.textContent;
+    return difficult;
+  });
+});
 
 let numbers = 10;
 const optionNumber = document.querySelectorAll(".number-question");
@@ -182,6 +191,36 @@ optionNumber.forEach((option) => {
 const items = document.querySelectorAll(".item");
 items.forEach((item) => {
   item.addEventListener("click", () => {
-    carrousel(numbers - 1);
+    if (item.children[1].textContent == "Random") {
+      fetch(
+        `https://quizapi.io/api/v1/questions?apiKey=tykn9PoZShBttsb4necadNc6S6LQgfwdQzgHZ3B8&
+         &difficulty=${difficult}&limit=${numbers}`
+      )
+        .then((res) => res.json())
+        .then((res) => {
+          console.log(res);
+          carrousel(res.length);
+        });
+    } else if (item.children[1].textContent == "Bash") {
+      fetch(
+        `https://quizapi.io/api/v1/questions?apiKey=tykn9PoZShBttsb4necadNc6S6LQgfwdQzgHZ3B8&
+        category=${item.children[1].textContent}&limit=${numbers}`
+      )
+        .then((res) => res.json())
+        .then((res) => {
+          carrousel(res.length);
+          console.log(res);
+        });
+    } else {
+      fetch(
+        `https://quizapi.io/api/v1/questions?apiKey=tykn9PoZShBttsb4necadNc6S6LQgfwdQzgHZ3B8&
+        category=${item.children[1].textContent}&difficulty=${difficult}&limit=${numbers}`
+      )
+        .then((res) => res.json())
+        .then((res) => {
+          carrousel(res.length);
+          console.log(res);
+        });
+    }
   });
 });

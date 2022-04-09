@@ -9,26 +9,7 @@ const up = devOps.getBoundingClientRect();
 const down = linux.getBoundingClientRect();
 const head = document.querySelector(".header");
 const sectionChoose = document.querySelector(".choose");
-const difficultOption = document.querySelectorAll(".difficult-item");
 const topic = document.querySelector(".topic");
-
-//getting the difficult
-let difficult = "easy";
-difficultOption.forEach((option) => {
-  option.addEventListener("click", () => {
-    difficult = option.textContent;
-    return difficult;
-  });
-});
-
-//getting the number of questions
-let numbers = "";
-const optionNumber = document.querySelectorAll(".number-question");
-optionNumber.forEach((option) => {
-  option.addEventListener("click", () => {
-    numbers = option.textContent;
-  });
-});
 
 //dinamic position of the icon
 const bodyQuestion = document.querySelector(".body-question");
@@ -66,23 +47,7 @@ items.forEach((item) => {
       head.classList.add("d-none");
       sectionChoose.classList.add("d-none");
     }, 1000);
-    console.log(typeof numbers);
-    if (item.children[1].textContent == "Random") {
-      fetch(
-        `https://quizapi.io/api/v1/questions?apiKey=tykn9PoZShBttsb4necadNc6S6LQgfwdQzgHZ3B8&
-         &difficulty=${difficult}&limit=${numbers}`
-      )
-        .then((res) => res.json())
-        .then((res) => console.log(res));
-    } else {
-      fetch(
-        `https://quizapi.io/api/v1/questions?apiKey=tykn9PoZShBttsb4necadNc6S6LQgfwdQzgHZ3B8&
-        category=${item.children[1].textContent}&difficulty=${difficult}&limit=${numbers}`
-      )
-        .then((res) => res.json())
-        .then((res) => console.log(res));
-    }
-    //    carrousel(numbers - 1);
+
     topic.textContent = item.children[1].textContent;
     iconQuestion.src = item.children[0].src;
     const iconQuestionContainer = document.querySelector(
@@ -108,28 +73,8 @@ containerQuestions.forEach((item) => {
   });
 });
 
-//creating the carrousel
-//import { sectionQuestion } from "./index.js";
-const containerSectionQuestion = document.querySelector(".container");
-const carrousel = (n) => {
-  for (let i = 0; i < n; i++) {
-    containerSectionQuestion.innerHTML += sectionQuestion;
-  }
-  for (let i = 0; i <= n; i++) {
-    containerSectionQuestion.children[i].setAttribute(
-      "id",
-      `question-${i + 1}`
-    );
-    containerSectionQuestion.children[
-      i
-    ].children[0].children[1].children[0].textContent = `${i + 1}/`;
-    containerSectionQuestion.children[
-      i
-    ].children[0].children[1].children[1].textContent = numbers;
-  }
-};
-
 //animation of the button next
+const containerSectionQuestion = document.querySelector(".container");
 const buttonNext = document.querySelector(".next");
 buttonNext.addEventListener("click", () => {
   topic.classList.add("mb-5");
