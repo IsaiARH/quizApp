@@ -56,7 +56,10 @@ items.forEach((item) => {
     iconQuestionContainer.appendChild(iconQuestion);
     iconQuestion.style.top = `${$bodyQuestion.top - 50}px`;
     iconQuestion.style.right = `${$bodyQuestion.left}px`;
-    chronometerF();
+    console.log($bodyQuestion.width);
+    setTimeout(() => {
+      chronometerF();
+    }, 2000);
   });
 });
 
@@ -64,7 +67,7 @@ items.forEach((item) => {
 const chronometer = document.querySelector(".chronometer");
 
 let running = 0;
-let stop;
+let stop = 0;
 const chronometerF = () => {
   let start = Date.now() - running;
   stop = setInterval(() => {
@@ -107,11 +110,10 @@ buttonNext.addEventListener("click", () => {
   let $identify = identify.slice(1);
   let bodyQuestionS = document.getElementById(`${$identify}`);
   setTimeout(() => {
-    let $questionNumber = bodyQuestionS.getAttribute("id").split("");
-    let number = $questionNumber[$questionNumber.length - 1];
     buttonNext.setAttribute(
       "href",
       `#${bodyQuestionS.nextElementSibling.getAttribute("id")}`
     );
   }, 500);
+  console.log($bodyQuestion.width);
 });

@@ -78,7 +78,7 @@ const sectionQuestion = `
           <div class="icon_question-container">
           </div>
         </div>
-        <div class="h3">
+        <div class="h3 text-center">
           <i>-</i>
           <i>-</i>
           <i>-</i>
@@ -99,7 +99,7 @@ const sectionQuestion = `
           <i>-</i>
           <i>-</i>
         </div>
-        <h4 class="text-center">what is</h4>
+        <h4 class="text-center question-about">what is</h4>
         <div class="questions d-flex flex-column align-items-center">
           <div
             class="d-flex justify-content-between question-container py-1 px-3"
@@ -151,7 +151,7 @@ const sectionQuestion = `
 //carrousel
 const containerSectionQuestion = document.querySelector(".container");
 containerSectionQuestion.innerHTML = sectionQuestion;
-const carrousel = (n) => {
+const carrousel = (n, obj) => {
   for (let i = 0; i < n; i++) {
     containerSectionQuestion.innerHTML += sectionQuestion;
     if (i + 1 == n) {
@@ -169,6 +169,9 @@ const carrousel = (n) => {
     containerSectionQuestion.children[
       i
     ].children[0].children[1].children[1].textContent = n + 1;
+
+    containerSectionQuestion.children[i].children[2].textContent =
+      obj[i].question;
   }
 };
 
@@ -203,7 +206,7 @@ items.forEach((item) => {
         .then((res) => res.json())
         .then((res) => {
           console.log(res);
-          carrousel(res.length - 1);
+          carrousel(res.length - 1, res);
         });
     } else if (item.children[1].textContent == "Bash") {
       fetch(
@@ -212,7 +215,7 @@ items.forEach((item) => {
       )
         .then((res) => res.json())
         .then((res) => {
-          carrousel(res.length - 1);
+          carrousel(res.length - 1, res);
           console.log(res);
         });
     } else {
@@ -222,7 +225,7 @@ items.forEach((item) => {
       )
         .then((res) => res.json())
         .then((res) => {
-          carrousel(res.length - 1);
+          carrousel(res.length - 1, res);
           console.log(res);
         });
     }
