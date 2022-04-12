@@ -155,7 +155,10 @@ const carrousel = (n, obj) => {
   for (let i = 0; i < n; i++) {
     containerSectionQuestion.innerHTML += sectionQuestion;
     if (i + 1 == n) {
-      containerSectionQuestion.children[n].classList.add("mb-4");
+      containerSectionQuestion.children[n].classList.add("mb-4", "d-none");
+    }
+    if (i >= 1) {
+      containerSectionQuestion.children[i].classList.add("mb-4", "d-none");
     }
   }
   for (let i = 0; i <= n; i++) {
@@ -172,6 +175,22 @@ const carrousel = (n, obj) => {
 
     containerSectionQuestion.children[i].children[2].textContent =
       obj[i].question;
+
+    for (let j = 0; j < 4; j++) {
+      if (j == 0) {
+        containerSectionQuestion.children[i].children[3].children[j].innerHTML =
+          obj[i].answers.answer_a;
+      } else if (j == 1) {
+        containerSectionQuestion.children[i].children[3].children[j].innerHTML =
+          obj[i].answers.answer_b;
+      } else if (j == 2) {
+        containerSectionQuestion.children[i].children[3].children[j].innerHTML =
+          obj[i].answers.answer_c;
+      } else {
+        containerSectionQuestion.children[i].children[3].children[j].innerHTML =
+          obj[i].answers.answer_d;
+      }
+    }
   }
 };
 

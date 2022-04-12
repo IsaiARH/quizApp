@@ -43,7 +43,7 @@ header img {
 .body-question {
   background-color: #fff;
   border-radius: 10px;
-  margin-top: 35px;
+  margin-top: 20px;
 }
 
 .items div {
@@ -61,20 +61,21 @@ header img {
 }
 
 .container {
-  height: 460px;
-  overflow: hidden;
+  height: 650px;
 }
 
 .container-active {
-  height: 430px;
+  height: 440px;
 }
 
 .question {
   background-color: #65c18c;
   font-family: "Rubik", sans-serif;
-  height: 100vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .question-container {
@@ -113,4 +114,8 @@ ion-icon {
   border: 2px solid #ff7ba9;
   background-color: #ffbed8;
   border-radius: 5px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin: 10px 10px 0 0;
 }

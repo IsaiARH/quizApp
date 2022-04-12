@@ -105,15 +105,17 @@ const containerSectionQuestion = document.querySelector(".container");
 const buttonNext = document.querySelector(".next");
 buttonNext.addEventListener("click", () => {
   topic.classList.add("mb-5");
-  containerSectionQuestion.classList.add("container-active");
   let identify = buttonNext.getAttribute("href");
   let $identify = identify.slice(1);
   let bodyQuestionS = document.getElementById(`${$identify}`);
+  let $bodyQuestionS = bodyQuestionS.previousElementSibling;
+  bodyQuestionS.classList.remove("d-none");
+  $bodyQuestionS.classList.add("d-none");
+  let size = bodyQuestionS.getBoundingClientRect();
   setTimeout(() => {
     buttonNext.setAttribute(
       "href",
       `#${bodyQuestionS.nextElementSibling.getAttribute("id")}`
     );
   }, 500);
-  console.log($bodyQuestion.width);
 });
