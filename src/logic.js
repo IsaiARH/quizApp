@@ -108,6 +108,11 @@ buttonNext.addEventListener("click", () => {
   let bodyQuestionS = document.getElementById(`${$identify}`);
   let $bodyQuestionS = bodyQuestionS.previousElementSibling;
   bodyQuestionS.classList.remove("d-none");
+  const sizeBodyQuestionS = $bodyQuestionS.getBoundingClientRect();
+  bodyQuestionS.children[0].children[2].children[0].style.top = `${
+    sizeBodyQuestionS.top - 60
+  }px`;
+  bodyQuestionS.children[0].children[2].children[0].style.right = `${sizeBodyQuestionS.left}px`;
   $bodyQuestionS.classList.add("d-none");
   setTimeout(() => {
     buttonNext.setAttribute(

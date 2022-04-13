@@ -176,9 +176,15 @@ const carrousel = (n, obj, icon) => {
     ].children[0].children[2].children[0].src = icon;
 
     const bodyQuestion = containerSectionQuestion.children[i];
-    console.log(bodyQuestion);
     const $bodyQuestion = bodyQuestion.getBoundingClientRect();
-
+    containerSectionQuestion.children[
+      i
+    ].children[0].children[2].children[0].style.top = `${
+      $bodyQuestion.top - 60
+    }px`;
+    containerSectionQuestion.children[
+      i
+    ].children[0].children[2].children[0].style.right = `${$bodyQuestion.left}px`;
     //adding the number of question and the total of questions
     containerSectionQuestion.children[
       i
@@ -273,7 +279,7 @@ items.forEach((item) => {
       )
         .then((res) => res.json())
         .then((res) => {
-          carrousel(res.length - 1, res);
+          carrousel(res.length - 1, res, item.children[0].src);
           console.log(res);
         });
     }
