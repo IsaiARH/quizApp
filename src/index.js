@@ -68,7 +68,7 @@ choose.innerHTML = contChoose;
 
 //section questions
 const sectionQuestion = `
-<div class="body-question p-3">
+<div class="body-question p-3 mb-3">
         <div class="d-flex">
             <h3 class="">Question</h3>
             <div class="d-flex h3 ms-auto me-5">
@@ -76,6 +76,7 @@ const sectionQuestion = `
               <p class="question-amoung">19</p>
             </div>
           <div class="icon_question-container">
+          <img src="" alt="" class="icon-question ms-2 mb-2">
           </div>
         </div>
         <div class="h3 text-center">
@@ -151,7 +152,8 @@ const sectionQuestion = `
 //carrousel
 const containerSectionQuestion = document.querySelector(".container");
 containerSectionQuestion.innerHTML = sectionQuestion;
-const carrousel = (n, obj) => {
+const carrousel = (n, obj, icon) => {
+  //adding the elements to the carrousel
   for (let i = 0; i < n; i++) {
     containerSectionQuestion.innerHTML += sectionQuestion;
     if (i + 1 == n) {
@@ -162,20 +164,33 @@ const carrousel = (n, obj) => {
     }
   }
   for (let i = 0; i <= n; i++) {
+    //adding a id to the elements in the carrousel
     containerSectionQuestion.children[i].setAttribute(
       "id",
       `question-${i + 1}`
     );
+
+    //adding icon to the elements in the carrousel
+    containerSectionQuestion.children[
+      i
+    ].children[0].children[2].children[0].src = icon;
+
+    const bodyQuestion = containerSectionQuestion.children[i];
+    console.log(bodyQuestion);
+    const $bodyQuestion = bodyQuestion.getBoundingClientRect();
+
+    //adding the number of question and the total of questions
     containerSectionQuestion.children[
       i
     ].children[0].children[1].children[0].textContent = `${i + 1}/`;
     containerSectionQuestion.children[
       i
     ].children[0].children[1].children[1].textContent = n + 1;
-
+    //adding the question
     containerSectionQuestion.children[i].children[2].textContent =
       obj[i].question;
 
+    //adding the answers to the DOM and deletin the elements if there are 3 answer or fewer
     for (let j = 0; j < 4; j++) {
       if (j == 0) {
         containerSectionQuestion.children[i].children[3].children[j].innerHTML =
@@ -227,10 +242,12 @@ optionNumber.forEach((option) => {
   });
 });
 
-//event click in the section question
+//calling to the API
+const question = document.querySelector(".question");
 const items = document.querySelectorAll(".item");
 items.forEach((item) => {
   item.addEventListener("click", () => {
+    question.classList.remove("d-none");
     if (item.children[1].textContent == "Random") {
       fetch(
         `https://quizapi.io/api/v1/questions?apiKey=tykn9PoZShBttsb4necadNc6S6LQgfwdQzgHZ3B8&
@@ -238,8 +255,7 @@ items.forEach((item) => {
       )
         .then((res) => res.json())
         .then((res) => {
-          console.log(res);
-          carrousel(res.length - 1, res);
+          carrousel(res.length - 1, res, item.children[0].src);
         });
     } else if (item.children[1].textContent == "Bash") {
       fetch(
@@ -248,8 +264,7 @@ items.forEach((item) => {
       )
         .then((res) => res.json())
         .then((res) => {
-          carrousel(res.length - 1, res);
-          console.log(res);
+          carrousel(res.length - 1, res, item.children[0].src);
         });
     } else {
       fetch(

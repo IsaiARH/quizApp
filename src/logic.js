@@ -1,5 +1,4 @@
 import anime from "animejs";
-import linuxIcon from "./imgs/icons/linux.png";
 
 const containerQuestions = document.querySelectorAll(".question-container");
 const items = document.querySelectorAll(".item");
@@ -49,14 +48,13 @@ items.forEach((item) => {
     }, 1000);
 
     topic.textContent = item.children[1].textContent;
-    iconQuestion.src = item.children[0].src;
+    /*iconQuestion.src = item.children[0].src;
     const iconQuestionContainer = document.querySelector(
       ".icon_question-container"
     );
     iconQuestionContainer.appendChild(iconQuestion);
     iconQuestion.style.top = `${$bodyQuestion.top - 50}px`;
-    iconQuestion.style.right = `${$bodyQuestion.left}px`;
-    console.log($bodyQuestion.width);
+    iconQuestion.style.right = `${$bodyQuestion.left}px`;*/
     setTimeout(() => {
       chronometerF();
     }, 2000);
@@ -89,6 +87,7 @@ const calculateTheTime = (time) => {
 //effect when we choose an answer
 containerQuestions.forEach((item) => {
   item.addEventListener("click", () => {
+    question.classList.remove("d-none");
     for (let i = 0; i < containerQuestions.length; i++) {
       if (containerQuestions[i].classList.contains("active")) {
         containerQuestions[i].classList.remove("active");
@@ -101,7 +100,6 @@ containerQuestions.forEach((item) => {
 });
 
 //animation of the button next
-const containerSectionQuestion = document.querySelector(".container");
 const buttonNext = document.querySelector(".next");
 buttonNext.addEventListener("click", () => {
   topic.classList.add("mb-5");
@@ -111,7 +109,6 @@ buttonNext.addEventListener("click", () => {
   let $bodyQuestionS = bodyQuestionS.previousElementSibling;
   bodyQuestionS.classList.remove("d-none");
   $bodyQuestionS.classList.add("d-none");
-  let size = bodyQuestionS.getBoundingClientRect();
   setTimeout(() => {
     buttonNext.setAttribute(
       "href",
