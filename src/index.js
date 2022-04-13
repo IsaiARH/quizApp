@@ -184,11 +184,25 @@ const carrousel = (n, obj) => {
         containerSectionQuestion.children[i].children[3].children[j].innerHTML =
           obj[i].answers.answer_b;
       } else if (j == 2) {
-        containerSectionQuestion.children[i].children[3].children[j].innerHTML =
-          obj[i].answers.answer_c;
-      } else {
-        containerSectionQuestion.children[i].children[3].children[j].innerHTML =
-          obj[i].answers.answer_d;
+        if (obj[i].answers.answer_c == null) {
+          containerSectionQuestion.children[i].children[3].removeChild(
+            containerSectionQuestion.children[i].children[3].children[j]
+          );
+        } else {
+          containerSectionQuestion.children[i].children[3].children[
+            j
+          ].innerHTML = obj[i].answers.answer_c;
+        }
+      } else if (j == 3) {
+        if (obj[i].answers.answer_d == null) {
+          containerSectionQuestion.children[i].children[3].removeChild(
+            containerSectionQuestion.children[i].children[3].lastElementChild
+          );
+        } else {
+          containerSectionQuestion.children[i].children[3].children[
+            j
+          ].innerHTML = obj[i].answers.answer_d;
+        }
       }
     }
   }
