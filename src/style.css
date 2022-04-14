@@ -119,3 +119,7 @@ ion-icon {
   top: 0;
   margin: 10px 10px 0 0;
 }
+
+.result-section {
+  background-color: #ff7ba9;
+}

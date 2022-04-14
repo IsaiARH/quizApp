@@ -175,6 +175,7 @@ const carrousel = (n, obj, icon) => {
       i
     ].children[0].children[2].children[0].src = icon;
 
+    //the first icon is dinamically positioned
     const bodyQuestion = containerSectionQuestion.children[i];
     const $bodyQuestion = bodyQuestion.getBoundingClientRect();
     containerSectionQuestion.children[

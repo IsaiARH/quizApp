@@ -10,11 +10,6 @@ const head = document.querySelector(".header");
 const sectionChoose = document.querySelector(".choose");
 const topic = document.querySelector(".topic");
 
-//dinamic position of the icon
-const bodyQuestion = document.querySelector(".body-question");
-const $bodyQuestion = bodyQuestion.getBoundingClientRect();
-const iconQuestion = document.createElement("img");
-
 //animation of the section choose
 items.forEach((item) => {
   item.addEventListener("click", () => {
@@ -48,13 +43,6 @@ items.forEach((item) => {
     }, 1000);
 
     topic.textContent = item.children[1].textContent;
-    /*iconQuestion.src = item.children[0].src;
-    const iconQuestionContainer = document.querySelector(
-      ".icon_question-container"
-    );
-    iconQuestionContainer.appendChild(iconQuestion);
-    iconQuestion.style.top = `${$bodyQuestion.top - 50}px`;
-    iconQuestion.style.right = `${$bodyQuestion.left}px`;*/
     setTimeout(() => {
       chronometerF();
     }, 2000);
@@ -108,6 +96,7 @@ buttonNext.addEventListener("click", () => {
   let bodyQuestionS = document.getElementById(`${$identify}`);
   let $bodyQuestionS = bodyQuestionS.previousElementSibling;
   bodyQuestionS.classList.remove("d-none");
+  //the icons are dinamically posicioned
   const sizeBodyQuestionS = $bodyQuestionS.getBoundingClientRect();
   bodyQuestionS.children[0].children[2].children[0].style.top = `${
     sizeBodyQuestionS.top - 60
