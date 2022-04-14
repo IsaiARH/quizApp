@@ -102,50 +102,13 @@ const sectionQuestion = `
         </div>
         <h4 class="text-center question-about">what is</h4>
         <div class="questions d-flex flex-column align-items-center">
-          <div
-            class="d-flex justify-content-between question-container py-1 px-3"
-          >
-            <p class="my-auto">test1</p>
-            <div class="question_container-input">
-              <input type="radio" class="d-none" id="checkbox" />
-              <label for="checkbox" class="question_container-label"
-                ><ion-icon name="stop-circle-outline" class="mt-1"></ion-icon
-              ></label>
-            </div>
-          </div>
-          <div
-            class="d-flex justify-content-between question-container py-1 px-3 mt-2"
-          >
-            <p class="my-auto">test2</p>
-            <div class="question_container-input">
-              <input type="radio" class="d-none" id="checkbox" />
-              <label for="checkbox" class="question_container-label"
-                ><ion-icon name="stop-circle-outline" class="mt-1"></ion-icon
-              ></label>
-            </div>
-          </div>
-          <div
-            class="d-flex justify-content-between question-container py-1 px-3 mt-2"
-          >
-            <p class="my-auto">test3</p>
-            <div class="question_container-input">
-              <input type="radio" class="d-none" id="checkbox" />
-              <label for="checkbox" class="question_container-label"
-                ><ion-icon name="stop-circle-outline" class="mt-1"></ion-icon
-              ></label>
-            </div>
-          </div>
-          <div
-            class="d-flex justify-content-between question-container py-1 px-3 mt-2 mb-5"
-          >
-            <p class="my-auto">test</p>
-            <div class="question_container-input">
-              <input type="radio" class="d-none" id="checkbox" />
-              <label for="checkbox" class="question_container-label"
-                ><ion-icon name="stop-circle-outline" class="mt-1"></ion-icon
-              ></label>
-            </div>
-          </div>
+          <button class="question-button mb-2  py-1">test</button>
+
+          <button class="question-button mb-2  py-1">test</button>
+
+          <button class="question-button mb-2  py-1">test</button>
+          
+          <button class="question-button  py-1">test</button>
         </div>
       </div>`;
 

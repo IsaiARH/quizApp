@@ -78,19 +78,15 @@ header img {
   align-items: center;
 }
 
-.question-container {
+.question-button {
+  background-color: #fff;
   width: 300px;
   border: 2px solid #ccc;
   color: #ccc;
   border-radius: 10px;
 }
 
-.question-container:hover {
-  color: #ff7ba9;
-  border: 2px solid #ff7ba9;
-}
-
-.question-container-active {
+.question-button:hover {
   color: #ff7ba9;
   border: 2px solid #ff7ba9;
 }
