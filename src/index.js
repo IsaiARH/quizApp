@@ -14,7 +14,7 @@ import bash from "./imgs/icons/gnu-bash.png";
 import doker from "./imgs/icons/whale.png";
 import sql from "./imgs/icons/sql.png";
 import linux from "./imgs/icons/linux.png";
-
+import giftCongratulations from "./imgs/72582-congratulations.gif";
 const head = document.querySelector(".header-div");
 const codeHead = `
 </div>
@@ -286,3 +286,9 @@ items.forEach((item) => {
     }
   });
 });
+
+const containerGift = document.querySelector(".result-gift");
+const resultGift = document.createElement("img");
+resultGift.src = giftCongratulations;
+resultGift.style.backgroundColor = "#ff7ba9";
+containerGift.appendChild(resultGift);

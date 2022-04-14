@@ -120,6 +120,12 @@ ion-icon {
   margin: 10px 10px 0 0;
 }
 
-.result-section {
-  background-color: #ff7ba9;
+.result {
+  background-color: #3c424a;
+}
+
+.result-questions button {
+  background-color: #3c424a;
+  border: 1px solid #c1f4c5;
+  border-radius: 8px;
 }
