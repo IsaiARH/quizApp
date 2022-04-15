@@ -97,11 +97,13 @@ buttonNext.addEventListener("click", () => {
   let $bodyQuestionS = bodyQuestionS.previousElementSibling;
   bodyQuestionS.classList.remove("d-none");
   //the icons are dinamically posicioned
-  const sizeBodyQuestionS = $bodyQuestionS.getBoundingClientRect();
+  const sizeBodyQuestionS = bodyQuestionS.getBoundingClientRect();
+  const $sizeBodyQuestionS = $bodyQuestionS.getBoundingClientRect();
   bodyQuestionS.children[0].children[2].children[0].style.top = `${
-    sizeBodyQuestionS.top - 60
+    $sizeBodyQuestionS.top - 60
   }px`;
   bodyQuestionS.children[0].children[2].children[0].style.right = `${sizeBodyQuestionS.left}px`;
+  console.log(sizeBodyQuestionS.top);
   $bodyQuestionS.classList.add("d-none");
   setTimeout(() => {
     buttonNext.setAttribute(

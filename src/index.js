@@ -139,16 +139,12 @@ const carrousel = (n, obj, icon) => {
     ].children[0].children[2].children[0].src = icon;
 
     //the first icon is dinamically positioned
-    const bodyQuestion = containerSectionQuestion.children[i];
-    const $bodyQuestion = bodyQuestion.getBoundingClientRect();
-    containerSectionQuestion.children[
-      i
-    ].children[0].children[2].children[0].style.top = `${
-      $bodyQuestion.top - 60
+    const bodyQuestionId = document.getElementById("question-1");
+    const $bodyQuestionId = bodyQuestionId.getBoundingClientRect();
+    containerSectionQuestion.children[0].children[0].children[2].children[0].style.top = `${
+      $bodyQuestionId.top - 60
     }px`;
-    containerSectionQuestion.children[
-      i
-    ].children[0].children[2].children[0].style.right = `${$bodyQuestion.left}px`;
+    containerSectionQuestion.children[0].children[0].children[2].children[0].style.right = `${$bodyQuestionId.left}px`;
     //adding the number of question and the total of questions
     containerSectionQuestion.children[
       i
