@@ -104,6 +104,10 @@ ion-icon {
   width: 80px;
 }
 
+.guion {
+  color: #ff7ba9;
+}
+
 .next {
   text-decoration: none;
   color: #fff;

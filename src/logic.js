@@ -96,6 +96,7 @@ buttonNext.addEventListener("click", () => {
   let bodyQuestionS = document.getElementById(`${$identify}`);
   let $bodyQuestionS = bodyQuestionS.previousElementSibling;
   bodyQuestionS.classList.remove("d-none");
+
   //the icons are dinamically posicioned
   const sizeBodyQuestionS = bodyQuestionS.getBoundingClientRect();
   const $sizeBodyQuestionS = $bodyQuestionS.getBoundingClientRect();
@@ -103,8 +104,17 @@ buttonNext.addEventListener("click", () => {
     $sizeBodyQuestionS.top - 60
   }px`;
   bodyQuestionS.children[0].children[2].children[0].style.right = `${sizeBodyQuestionS.left}px`;
-  console.log(sizeBodyQuestionS.top);
+
+  //changing the color of the guion
+  let $identifyG = identify.slice(10);
+  for (let i = 0; i < $identifyG; i++) {
+    bodyQuestionS.children[1].children[i].classList.add("guion");
+  }
+
+  //hiding the element previous to the actually
   $bodyQuestionS.classList.add("d-none");
+
+  //changing the href to pass to the other element in the carrousel
   setTimeout(() => {
     buttonNext.setAttribute(
       "href",
