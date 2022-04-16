@@ -105,10 +105,10 @@ buttonNext.addEventListener("click", () => {
   }px`;
   bodyQuestionS.children[0].children[2].children[0].style.right = `${sizeBodyQuestionS.left}px`;
 
-  //changing the color of the guion
+  //changing the color of the hypens
   let $identifyG = identify.slice(10);
   for (let i = 0; i < $identifyG; i++) {
-    bodyQuestionS.children[1].children[i].classList.add("guion");
+    bodyQuestionS.children[1].children[i].classList.add("hypen");
   }
 
   //hiding the element previous to the actually

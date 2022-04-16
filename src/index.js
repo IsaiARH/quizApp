@@ -80,7 +80,7 @@ const sectionQuestion = `
           </div>
         </div>
         <div class="h3 text-center"> 
-          <i class="mx-1 guion">-</i>       
+          <i class="mx-1 hypen">-</i>       
         </div>
         <h4 class="text-center question-about">what is</h4>
         <div class="questions d-flex flex-column align-items-center">
@@ -94,7 +94,7 @@ const sectionQuestion = `
         </div>
       </div>`;
 
-const guionQuestion = `<i class="mx-1">-</i>`;
+const hypenQuestion = `<i class="mx-1">-</i>`;
 //carrousel
 const containerSectionQuestion = document.querySelector(".container");
 containerSectionQuestion.innerHTML = sectionQuestion;
@@ -128,10 +128,10 @@ const carrousel = (n, obj, icon) => {
       $bodyQuestionId.top - 60
     }px`;
     containerSectionQuestion.children[0].children[0].children[2].children[0].style.right = `${$bodyQuestionId.left}px`;
-    //adding the guion dinamically in the DOM
+    //adding the hypens dinamically in the DOM
     for (let j = 0; j < n; j++) {
       containerSectionQuestion.children[i].children[1].innerHTML +=
-        guionQuestion;
+        hypenQuestion;
     }
 
     //adding the number of question and the total of questions
