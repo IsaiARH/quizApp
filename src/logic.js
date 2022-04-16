@@ -72,21 +72,6 @@ const calculateTheTime = (time) => {
   return `${display_minutes}:${display_seconds}`;
 };
 
-//effect when we choose an answer
-containerQuestions.forEach((item) => {
-  item.addEventListener("click", () => {
-    question.classList.remove("d-none");
-    for (let i = 0; i < containerQuestions.length; i++) {
-      if (containerQuestions[i].classList.contains("active")) {
-        containerQuestions[i].classList.remove("active");
-        containerQuestions[i].classList.remove("question-container-active");
-      }
-    }
-    item.classList.add("active");
-    item.classList.add("question-container-active");
-  });
-});
-
 //animation of the button next
 const buttonNext = document.querySelector(".next");
 buttonNext.addEventListener("click", () => {
