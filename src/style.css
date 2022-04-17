@@ -91,6 +91,10 @@ header img {
   border: 2px solid #ff7ba9;
 }
 
+.question-button-active {
+  border: 2px solid #ff7ba9;
+}
+
 .question h2 {
   opacity: 0.8;
 }

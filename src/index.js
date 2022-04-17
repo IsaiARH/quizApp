@@ -116,6 +116,13 @@ const carrousel = (n, obj, icon) => {
       `question-${i + 1}`
     );
 
+    //adding a clas to the answers
+    for (let j = 0; j < 4; j++) {
+      containerSectionQuestion.children[i].children[3].children[
+        j
+      ].classList.add(`answers-${i + 1}`);
+    }
+
     //adding icon to the elements in the carrousel
     containerSectionQuestion.children[
       i

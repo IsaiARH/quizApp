@@ -45,6 +45,7 @@ items.forEach((item) => {
     topic.textContent = item.children[1].textContent;
     setTimeout(() => {
       chronometerF();
+      getAnswer(".answers-1");
     }, 2000);
   });
 });
@@ -70,6 +71,28 @@ const calculateTheTime = (time) => {
   const display_minutes = total_minutes.toString().padStart(2, "0");
 
   return `${display_minutes}:${display_seconds}`;
+};
+
+//gettin the answer
+const getAnswer = (answersClass) => {
+  const answers = document.querySelectorAll(answersClass);
+  answers.forEach((answer) => {
+    answer.addEventListener("click", () => {
+      const containerAnswers = answer.parentElement;
+      for (let i = 0; i < containerAnswers.children.length; i++) {
+        if (
+          containerAnswers.children[i].classList.contains(
+            "question-button-active"
+          )
+        ) {
+          containerAnswers.children[i].classList.remove(
+            "question-button-active"
+          );
+        }
+      }
+      answer.classList.add("question-button-active");
+    });
+  });
 };
 
 //animation of the button next
@@ -106,4 +129,6 @@ buttonNext.addEventListener("click", () => {
       `#${bodyQuestionS.nextElementSibling.getAttribute("id")}`
     );
   }, 500);
+
+  getAnswer(`.answers-${$identifyG}`);
 });
