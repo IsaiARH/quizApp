@@ -84,13 +84,13 @@ const sectionQuestion = `
         </div>
         <h4 class="text-center question-about">what is</h4>
         <div class="questions d-flex flex-column align-items-center">
-          <button class="question-button mb-2  py-1">test</button>
+          <button class="question-button answer_a_correct mb-2  py-1">test</button>
 
-          <button class="question-button mb-2  py-1">test</button>
+          <button class="question-button answer_b_correct mb-2  py-1">test</button>
 
-          <button class="question-button mb-2  py-1">test</button>
+          <button class="question-button answer_c_correct mb-2  py-1">test</button>
           
-          <button class="question-button  py-1">test</button>
+          <button class="question-button answer_d_correct  py-1">test</button>
         </div>
       </div>`;
 
@@ -98,6 +98,7 @@ const hypenQuestion = `<i class="mx-1">-</i>`;
 //carrousel
 const containerSectionQuestion = document.querySelector(".container");
 containerSectionQuestion.innerHTML = sectionQuestion;
+const amoungAnswers = document.querySelector(".amoung-result");
 const carrousel = (n, obj, icon) => {
   //adding the elements to the carrousel
   for (let i = 0; i < n; i++) {
@@ -148,6 +149,8 @@ const carrousel = (n, obj, icon) => {
     containerSectionQuestion.children[
       i
     ].children[0].children[1].children[1].textContent = n + 1;
+
+    amoungAnswers.textContent = n + 1;
     //adding the question
     containerSectionQuestion.children[i].children[2].textContent =
       obj[i].question;
@@ -204,6 +207,43 @@ optionNumber.forEach((option) => {
   });
 });
 
+//here we see if the answer is correct or incorrect
+const buttonNext = document.querySelector(".next");
+const correctAnswers = document.querySelector(".result-answers");
+let counter = 0;
+const testAnswer = (res) => {
+  buttonNext.addEventListener("click", () => {
+    console.log(res);
+    let identify = buttonNext.getAttribute("href");
+    let $identify = identify.slice(10);
+    let thisIdentify = document.getElementById(identify.slice(1));
+    let previousIdentify = thisIdentify.previousElementSibling;
+    let claves = Object.keys(res[$identify - 1].correct_answers);
+    for (let i = 0; i < 4; i++) {
+      let clave = claves[i];
+      if (res[$identify - 2].correct_answers[clave] == "true") {
+        for (let j = 0; j < previousIdentify.children[3].children.length; j++) {
+          if (
+            previousIdentify.children[3].children[j].classList.contains(clave)
+          ) {
+            if (
+              previousIdentify.children[3].children[j].classList.contains(
+                "question-button-active"
+              )
+            ) {
+              counter = counter + 1;
+              correctAnswers.innerHTML = counter;
+              return counter;
+            } else {
+              console.log("bad");
+            }
+          }
+        }
+      }
+    }
+  });
+};
+
 //calling to the API
 const question = document.querySelector(".question");
 const items = document.querySelectorAll(".item");
@@ -218,6 +258,7 @@ items.forEach((item) => {
         .then((res) => res.json())
         .then((res) => {
           carrousel(res.length - 1, res, item.children[0].src);
+          testAnswer(res);
         });
     } else if (item.children[1].textContent == "Bash") {
       fetch(
@@ -227,6 +268,7 @@ items.forEach((item) => {
         .then((res) => res.json())
         .then((res) => {
           carrousel(res.length - 1, res, item.children[0].src);
+          testAnswer(res);
         });
     } else {
       fetch(
@@ -236,7 +278,7 @@ items.forEach((item) => {
         .then((res) => res.json())
         .then((res) => {
           carrousel(res.length - 1, res, item.children[0].src);
-          console.log(res);
+          testAnswer(res);
         });
     }
   });
