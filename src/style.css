@@ -134,3 +134,7 @@ ion-icon {
   border: 1px solid #c1f4c5;
   border-radius: 8px;
 }
+
+.answered {
+  display: none;
+}

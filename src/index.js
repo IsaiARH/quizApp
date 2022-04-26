@@ -14,7 +14,6 @@ import bash from "./imgs/icons/gnu-bash.png";
 import doker from "./imgs/icons/whale.png";
 import sql from "./imgs/icons/sql.png";
 import linux from "./imgs/icons/linux.png";
-import giftCongratulations from "./imgs/72582-congratulations.gif";
 const head = document.querySelector(".header-div");
 const codeHead = `
 </div>
@@ -209,6 +208,7 @@ optionNumber.forEach((option) => {
 
 //here we see if the answer is correct or incorrect
 const buttonNext = document.querySelector(".next");
+const questionContainer = document.querySelector(".question");
 const correctAnswers = document.querySelector(".result-answers");
 let counter = 0;
 const testAnswer = (res) => {
@@ -219,23 +219,49 @@ const testAnswer = (res) => {
     let thisIdentify = document.getElementById(identify.slice(1));
     let previousIdentify = thisIdentify.previousElementSibling;
     let claves = Object.keys(res[$identify - 1].correct_answers);
-    for (let i = 0; i < 4; i++) {
-      let clave = claves[i];
-      if (res[$identify - 2].correct_answers[clave] == "true") {
-        for (let j = 0; j < previousIdentify.children[3].children.length; j++) {
-          if (
-            previousIdentify.children[3].children[j].classList.contains(clave)
+    if (questionContainer.classList.contains("active")) {
+      for (let i = 0; i < 4; i++) {
+        let clave = claves[i];
+        if (res[$identify - 1].correct_answers[clave] == "true") {
+          for (let j = 0; j < thisIdentify.children[3].children.length; j++) {
+            if (
+              thisIdentify.children[3].children[j].classList.contains(clave)
+            ) {
+              if (
+                thisIdentify.children[3].children[j].classList.contains(
+                  "question-button-active"
+                )
+              ) {
+                counter = counter + 1;
+                correctAnswers.innerHTML = counter;
+                return counter;
+              }
+            }
+          }
+        }
+      }
+    } else {
+      for (let i = 0; i < 4; i++) {
+        let clave = claves[i];
+        if (res[$identify - 2].correct_answers[clave] == "true") {
+          for (
+            let j = 0;
+            j < previousIdentify.children[3].children.length;
+            j++
           ) {
             if (
-              previousIdentify.children[3].children[j].classList.contains(
-                "question-button-active"
-              )
+              previousIdentify.children[3].children[j].classList.contains(clave)
             ) {
-              counter = counter + 1;
-              correctAnswers.innerHTML = counter;
-              return counter;
-            } else {
-              console.log("bad");
+              if (
+                previousIdentify.children[3].children[j].classList.contains(
+                  "question-button-active"
+                )
+              ) {
+                counter = counter + 1;
+                correctAnswers.innerHTML = counter;
+                return counter;
+              } else {
+              }
             }
           }
         }
@@ -283,9 +309,3 @@ items.forEach((item) => {
     }
   });
 });
-
-const containerGift = document.querySelector(".result-gift");
-const resultGift = document.createElement("img");
-resultGift.src = giftCongratulations;
-resultGift.style.backgroundColor = "#ff7ba9";
-containerGift.appendChild(resultGift);

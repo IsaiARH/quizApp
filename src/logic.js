@@ -9,7 +9,9 @@ const down = linux.getBoundingClientRect();
 const head = document.querySelector(".header");
 const sectionChoose = document.querySelector(".choose");
 const topic = document.querySelector(".topic");
-
+import giftCongratulations from "./imgs/72582-congratulations.gif";
+import giftNervous from "./imgs/74787-nervous-laughter (1).gif";
+import giftSad from "./imgs/96537-sad-emoji (1).gif";
 //animation of the section choose
 items.forEach((item) => {
   item.addEventListener("click", () => {
@@ -96,8 +98,15 @@ const getAnswer = (answersClass) => {
 };
 
 //animation of the button next
+const containerGift = document.querySelector(".result-gift");
+const resultGift = document.createElement("img");
+const questionContainer = document.querySelector(".question");
+const result = document.querySelector(".result");
+const correctAnswers = document.querySelector(".result-answers");
+const amoungAnswers = document.querySelector(".amoung-result");
 const buttonNext = document.querySelector(".next");
 buttonNext.addEventListener("click", () => {
+  let variance = Math.floor(amoungAnswers.textContent / 2);
   topic.classList.add("mb-5");
   let identify = buttonNext.getAttribute("href");
   let $identify = identify.slice(1);
@@ -120,14 +129,32 @@ buttonNext.addEventListener("click", () => {
   }
 
   //hiding the element previous to the actually
-  $bodyQuestionS.classList.add("d-none");
+  $bodyQuestionS.classList.add("answered");
 
   //changing the href to pass to the other element in the carrousel
   setTimeout(() => {
-    buttonNext.setAttribute(
-      "href",
-      `#${bodyQuestionS.nextElementSibling.getAttribute("id")}`
-    );
+    try {
+      buttonNext.setAttribute(
+        "href",
+        `#${bodyQuestionS.nextElementSibling.getAttribute("id")}`
+      );
+    } catch (error) {
+      if (questionContainer.classList.contains("active")) {
+        //  questionContainer.classList.add("d-none");
+        //  result.classList.remove("d-none");
+        if (correctAnswers.textContent > variance) {
+          resultGift.style.backgroundColor = "#ff7ba9";
+          resultGift.src = giftCongratulations;
+          containerGift.appendChild(resultGift);
+        } else if (questionContainer.textContent == variance) {
+          resultGift.style.backgroundColor = "#fff";
+          resultGift.src = giftNervous;
+          containerGift.appendChild(resultGift);
+        }
+      } else {
+        questionContainer.classList.add("active");
+      }
+    }
   }, 500);
 
   getAnswer(`.answers-${$identifyG}`);
