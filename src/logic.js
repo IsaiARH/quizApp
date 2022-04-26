@@ -104,6 +104,7 @@ const questionContainer = document.querySelector(".question");
 const result = document.querySelector(".result");
 const correctAnswers = document.querySelector(".result-answers");
 const amoungAnswers = document.querySelector(".amoung-result");
+const answerButtons = document.querySelectorAll(".result_questions-button");
 const buttonNext = document.querySelector(".next");
 buttonNext.addEventListener("click", () => {
   let variance = Math.floor(amoungAnswers.textContent / 2);
@@ -139,17 +140,32 @@ buttonNext.addEventListener("click", () => {
         `#${bodyQuestionS.nextElementSibling.getAttribute("id")}`
       );
     } catch (error) {
+      /*this error happens when there are no other elements in the carrousel giving us 
+      the oportunity to show the result of our answers*/
       if (questionContainer.classList.contains("active")) {
         //  questionContainer.classList.add("d-none");
         //  result.classList.remove("d-none");
         if (correctAnswers.textContent > variance) {
-          resultGift.style.backgroundColor = "#ff7ba9";
+          result.style.backgroundColor = "#3c424a";
           resultGift.src = giftCongratulations;
           containerGift.appendChild(resultGift);
-        } else if (questionContainer.textContent == variance) {
-          resultGift.style.backgroundColor = "#fff";
+          answerButtons.forEach(
+            (button) => (button.style.backgroundColor = "#3c424a")
+          );
+        } else if (correctAnswers.textContent == variance) {
+          result.style.backgroundColor = "#fff";
           resultGift.src = giftNervous;
           containerGift.appendChild(resultGift);
+          answerButtons.forEach(
+            (button) => (button.style.backgroundColor = "#fff")
+          );
+        } else {
+          result.style.backgroundColor = "#fff";
+          resultGift.src = giftSad;
+          containerGift.appendChild(resultGift);
+          answerButtons.forEach(
+            (button) => (button.style.backgroundColor = "#fff")
+          );
         }
       } else {
         questionContainer.classList.add("active");
