@@ -210,6 +210,9 @@ optionNumber.forEach((option) => {
 const buttonNext = document.querySelector(".next");
 const questionContainer = document.querySelector(".question");
 const correctAnswers = document.querySelector(".result-answers");
+let correctAnswersArray = [];
+let incorrectAnswersArray = [];
+let skipArray = [];
 let counter = 0;
 const testAnswer = (res) => {
   buttonNext.addEventListener("click", () => {
@@ -220,6 +223,7 @@ const testAnswer = (res) => {
     let previousIdentify = thisIdentify.previousElementSibling;
     let claves = Object.keys(res[$identify - 1].correct_answers);
     if (questionContainer.classList.contains("active")) {
+      //this is a complete procces for the last question
       for (let i = 0; i < 4; i++) {
         let clave = claves[i];
         if (res[$identify - 1].correct_answers[clave] == "true") {
@@ -234,13 +238,50 @@ const testAnswer = (res) => {
               ) {
                 counter = counter + 1;
                 correctAnswers.innerHTML = counter;
-                return counter;
+                //adding the correct answers in an array to show after we  make click on the correct answers button
+                correctAnswersArray.push([
+                  thisIdentify.getAttribute("id").slice(9),
+                  thisIdentify.children[2].textContent,
+                  thisIdentify.children[3].children[j].textContent,
+                ]);
+                return counter, correctAnswersArray;
+              } else {
+                for (
+                  let j = 0;
+                  j < thisIdentify.children[3].children.length;
+                  j++
+                ) {
+                  if (
+                    thisIdentify.children[3].children[j].classList.contains(
+                      "question-button-active"
+                    )
+                  ) {
+                    //adding the incorrect dates in a array to show when we make a click on the wrong answers button
+                    incorrectAnswersArray.push([
+                      thisIdentify.getAttribute("id").slice(9),
+                      thisIdentify.children[2].textContent,
+                      thisIdentify.children[3].children[j].textContent,
+                    ]);
+                    return incorrectAnswersArray;
+                  } else {
+                    if (j == thisIdentify.children[3].children.length - 1) {
+                      //ading the skip dates in a array to show when we make a click on the skip answers button
+                      skipArray.push([
+                        thisIdentify.getAttribute("id").slice(9),
+                        thisIdentify.children[2].textContent,
+                      ]);
+                      return skipArray;
+                    }
+                  }
+                }
               }
             }
           }
         }
       }
-    } else {
+    }
+    //Over here we get the score from the all of the questions except the last one
+    else {
       for (let i = 0; i < 4; i++) {
         let clave = claves[i];
         if (res[$identify - 2].correct_answers[clave] == "true") {
@@ -259,8 +300,41 @@ const testAnswer = (res) => {
               ) {
                 counter = counter + 1;
                 correctAnswers.innerHTML = counter;
-                return counter;
+                correctAnswersArray.push([
+                  previousIdentify.getAttribute("id").slice(9),
+                  previousIdentify.children[2].textContent,
+                  previousIdentify.children[3].children[j].textContent,
+                ]);
+                return counter, correctAnswersArray;
               } else {
+                for (
+                  let j = 0;
+                  j < previousIdentify.children[3].children.length;
+                  j++
+                ) {
+                  if (
+                    previousIdentify.children[3].children[j].classList.contains(
+                      "question-button-active"
+                    )
+                  ) {
+                    //adding the incorrect dates in a array to show when we make a click in the wrong answers button
+                    incorrectAnswersArray.push([
+                      previousIdentify.getAttribute("id").slice(9),
+                      previousIdentify.children[2].textContent,
+                      previousIdentify.children[3].children[j].textContent,
+                    ]);
+                    return incorrectAnswersArray;
+                  } else {
+                    if (j == previousIdentify.children[3].children.length - 1) {
+                      //ading the skip dates in a array to show when we make a click in the skip answers button
+                      skipArray.push([
+                        previousIdentify.getAttribute("id").slice(9),
+                        previousIdentify.children[2].textContent,
+                      ]);
+                      return skipArray;
+                    }
+                  }
+                }
               }
             }
           }
@@ -308,4 +382,18 @@ items.forEach((item) => {
         });
     }
   });
+});
+
+//showing the correct, incorrect and skip answers
+const buttonsContainer = document.querySelector(".result-questions");
+buttonsContainer.children[0].addEventListener("click", () => {
+  console.log(correctAnswersArray);
+});
+
+buttonsContainer.children[1].addEventListener("click", () => {
+  console.log(incorrectAnswersArray);
+});
+
+buttonsContainer.children[2].addEventListener("click", () => {
+  console.log(skipArray);
 });
