@@ -143,8 +143,8 @@ buttonNext.addEventListener("click", () => {
       /*this error happens when there are no other elements in the carrousel giving us 
       the oportunity to show the result of our answers*/
       if (questionContainer.classList.contains("active")) {
-        //  questionContainer.classList.add("d-none");
-        //  result.classList.remove("d-none");
+        questionContainer.classList.add("d-none");
+        result.classList.remove("d-none");
         if (correctAnswers.textContent > variance) {
           result.style.backgroundColor = "#3c424a";
           resultGift.src = giftCongratulations;

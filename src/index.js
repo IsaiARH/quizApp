@@ -385,15 +385,54 @@ items.forEach((item) => {
 });
 
 //showing the correct, incorrect and skip answers
+const tableResut = document.querySelector(".table");
+const tableResutTitle = document.querySelector(".modal-title");
+const tableResutContent = document.querySelector(".table-content");
+const tableCategoryAnswers = document.querySelector(".table-category");
+const createItemTable = (array, tableClass, title) => {
+  for (let i = 0; i < array.length; i++) {
+    let tableItem;
+    if (title == "Skip answers") {
+      tableItem = `
+    <tr>
+      <th scope="row">${array[i][0]}</th>
+      <td>${array[i][1]}</td>
+   </tr>
+  `;
+    } else {
+      tableItem = `
+    <tr>
+      <th scope="row">${array[i][0]}</th>
+      <td>${array[i][1]}</td>
+      <td>${array[i][2]}</td>
+   </tr>
+  `;
+    }
+    tableResut.classList.remove(tableResut.classList[2]);
+    tableResut.classList.add(tableClass);
+    tableResutTitle.textContent = title;
+    tableResutContent.innerHTML += tableItem;
+  }
+};
+
 const buttonsContainer = document.querySelector(".result-questions");
 buttonsContainer.children[0].addEventListener("click", () => {
-  console.log(correctAnswersArray);
+  createItemTable(correctAnswersArray, "table-success", "Correct answers");
+  tableCategoryAnswers.classList.remove("d-none");
 });
 
 buttonsContainer.children[1].addEventListener("click", () => {
-  console.log(incorrectAnswersArray);
+  createItemTable(incorrectAnswersArray, "table-danger", "Incorrect answers");
+  tableCategoryAnswers.classList.remove("d-none");
 });
 
 buttonsContainer.children[2].addEventListener("click", () => {
-  console.log(skipArray);
+  createItemTable(skipArray, "table-light", "Skip answers");
+  tableCategoryAnswers.classList.add("d-none");
+});
+
+//Cleaning the content of the table
+const tableResutCleanButton = document.querySelector(".table-clean");
+tableResutCleanButton.addEventListener("click", () => {
+  tableResutContent.innerHTML = "";
 });
