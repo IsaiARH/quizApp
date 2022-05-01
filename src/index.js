@@ -408,11 +408,11 @@ const createItemTable = (array, tableClass, title) => {
    </tr>
   `;
     }
-    tableResut.classList.remove(tableResut.classList[2]);
-    tableResut.classList.add(tableClass);
-    tableResutTitle.textContent = title;
     tableResutContent.innerHTML += tableItem;
   }
+  tableResutTitle.textContent = title;
+  tableResut.classList.remove(tableResut.classList[2]);
+  tableResut.classList.add(tableClass);
 };
 
 const buttonsContainer = document.querySelector(".result-questions");
