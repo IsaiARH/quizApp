@@ -436,3 +436,8 @@ const tableResutCleanButton = document.querySelector(".table-clean");
 tableResutCleanButton.addEventListener("click", () => {
   tableResutContent.innerHTML = "";
 });
+
+//go back to the first part section
+buttonsContainer.children[3].addEventListener("click", () => {
+  window.location.reload();
+});

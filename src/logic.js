@@ -1,6 +1,5 @@
 import anime from "animejs";
 
-const containerQuestions = document.querySelectorAll(".question-container");
 const items = document.querySelectorAll(".item");
 const devOps = document.querySelector(".devOps");
 const linux = document.querySelector(".linux");
