@@ -55,10 +55,10 @@ items.forEach((item) => {
 const chronometer = document.querySelector(".chronometer");
 
 let running = 0;
-let stop = 0;
+let $stop = 0;
 const chronometerF = () => {
   let start = Date.now() - running;
-  stop = setInterval(() => {
+  $stop = setInterval(() => {
     running = Date.now() - start;
     chronometer.textContent = calculateTheTime(running);
   }, 1000);
@@ -102,6 +102,7 @@ const resultGift = document.createElement("img");
 const questionContainer = document.querySelector(".question");
 const result = document.querySelector(".result");
 const correctAnswers = document.querySelector(".result-answers");
+const resultTime = document.querySelector(".result-time");
 const amoungAnswers = document.querySelector(".amoung-result");
 const answerButtons = document.querySelectorAll(".result_questions-button");
 const buttonNext = document.querySelector(".next");
@@ -139,11 +140,13 @@ buttonNext.addEventListener("click", () => {
         `#${bodyQuestionS.nextElementSibling.getAttribute("id")}`
       );
     } catch (error) {
-      /*this error happens when there are no other elements in the carrousel giving us 
+      /*this error happens when there are no other elements in the carrousel, giving us 
       the oportunity to show the result of our answers*/
       if (questionContainer.classList.contains("active")) {
         questionContainer.classList.add("d-none");
         result.classList.remove("d-none");
+        clearInterval($stop);
+        resultTime.textContent = chronometer.textContent;
         if (correctAnswers.textContent > variance) {
           result.style.backgroundColor = "#3c424a";
           resultGift.src = giftCongratulations;
